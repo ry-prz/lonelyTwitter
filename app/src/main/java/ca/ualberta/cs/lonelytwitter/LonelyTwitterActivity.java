@@ -34,6 +34,37 @@ public class LonelyTwitterActivity extends Activity {
 		Button saveButton = (Button) findViewById(R.id.save);
 		oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
 
+		try {
+			// try catch will handle the first tweet, HAS OPTION of tweeting, or no tweeting at all
+			Tweet tweet = new NormalTweet("First tweet"); // this is upcasted to Tweet
+			//Tweet tweet2 = new Tweet(new Date(), "My second tweet");
+			tweet.setMessage("this is a message");
+
+			NormalTweet normalTweet = new NormalTweet("i'm normal");
+
+			ImportantTweet importantTweet = new ImportantTweet("very important");
+			importantTweet.getDate();
+
+			ArrayList<Tweet> arrayList = new ArrayList<Tweet>();
+			arrayList.add(tweet);
+
+			// example of casting
+			arrayList.add((Tweet) importantTweet);
+
+			arrayList.add(normalTweet);
+
+			// adding a mood
+			Sad sad = new Sad();
+			Happy happy = new Happy();
+			importantTweet.addMood(sad);
+			normalTweet.addMood(happy);
+
+
+		} catch (TweetTooLongException e) {
+			e.printStackTrace();
+		}
+
+
 		saveButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {

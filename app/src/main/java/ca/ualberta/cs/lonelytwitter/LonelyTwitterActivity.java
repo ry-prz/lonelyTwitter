@@ -42,6 +42,7 @@ public class LonelyTwitterActivity extends Activity {
 
 		bodyText = (EditText) findViewById(R.id.body);
 		Button saveButton = (Button) findViewById(R.id.save);
+		Button clearButton = (Button) findViewById(R.id.clear);
 		oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
 
 
@@ -94,6 +95,27 @@ public class LonelyTwitterActivity extends Activity {
 
 			}
 		});
+
+		// Added for lab excercise
+		clearButton.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				setResult(RESULT_OK);
+
+				// clear tweetList, screen is cleared
+				tweetList.clear();
+
+				//delete file, tweets on the disk are removed
+				deleteFile("file.sav");
+
+				// update list view
+				adapter.notifyDataSetChanged();
+
+
+			}
+		});
+
+
 	}
 
 	@Override

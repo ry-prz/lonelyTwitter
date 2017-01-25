@@ -19,17 +19,23 @@ public abstract class Tweet implements Tweetable {
         moodArrayList.add(mood);
     }
 
-    public Tweet(Date date, String message) throws TweetTooLongException {
+    public Tweet(Date date, String message)  {
         this.date = date;
         this.message = message;
     }
 
-    public Tweet(String message) throws TweetTooLongException{
+    public Tweet(String message) {
         this.message = message;
         this.date = new Date(); // current time and date
     }
 
     public abstract Boolean isImportant();
+
+    @Override
+    public String toString() {
+        return date.toString() + " | " + message;
+    }
+
 
     public Date getDate() {
         return date;
@@ -45,10 +51,12 @@ public abstract class Tweet implements Tweetable {
     }
 
     public void setMessage(String message) throws TweetTooLongException {
-        if (message.length() > 144) {
+        if (message.length() > 144) {   //140??
             throw new TweetTooLongException();
         } else {
             this.message = message;
         }
     }
+
+
 }

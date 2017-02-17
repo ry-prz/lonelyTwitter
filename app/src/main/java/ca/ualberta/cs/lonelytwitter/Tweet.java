@@ -1,6 +1,7 @@
 package ca.ualberta.cs.lonelytwitter;
 
 import java.util.Date;
+import java.util.StringTokenizer;
 
 /**
  * Created by romansky on 1/14/16.
@@ -35,6 +36,12 @@ public abstract class Tweet {
     }
 
     abstract public boolean isImportant();
+
+
+
+    public String getMessage() {
+        return this.message;
+    }
 
     @Override
     public String toString(){
